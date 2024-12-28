@@ -71,7 +71,7 @@ c) Read a file with condition
   this prints line.txt line no 6 to 12
 
   5# sed command #
-  > sed -n'6,12p' line.txt
+  > sed -n '6,12p' line.txt
   this prints line.txt line no 6 to 12
 
   6# head and tail combined command #
