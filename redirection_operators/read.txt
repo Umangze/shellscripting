@@ -14,7 +14,7 @@ a) ">" To create a new file or copy to the existing file
  if the file is not there then it will create the file first and then push the output of the command
  to the file
 
-b> ">>" to append to the existing file
+b) ">>" to append to the existing file
 
  $ pwd > demo.txt
 
