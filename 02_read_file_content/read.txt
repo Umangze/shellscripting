@@ -1,0 +1,79 @@
+###Commands to Read a File Content
+
+a) Read a file content by opening it
+
+  > Using vi/vim/nano editors
+
+  $ vi demo.txt
+  $ vim demo.txt
+  $ nano demo.txt
+
+
+b) Read a file content without opening it
+
+  > Using cat, less or more
+   
+  ##Read without opening a file
+  ### cat to read a file###
+  > cat file.txt
+  > cat -n file.txt 
+  sets number with cat
+
+  ###less to read a file###
+  > less file.txt
+  up arrow to go up, down/enter to go down and q for exit
+
+  ###more to read a file###
+  > more file.txt
+  only enter and down key works. you cannot go up, q to stop or exit
+
+c) Read a file with condition
+
+  1) more
+  2) head
+  3) tail
+  4) awk
+  5) sed
+  6) head and tail combine
+
+  #1 more command #
+
+  > more -n file.txt  
+  > more -2 file.txt
+  first 2 lines in the file and then enter and then q
+
+  > more +n file.txt
+  > more +4 file.txt
+  read from 4th line and then enter and then q
+
+  2# head command #
+
+  > head file.txt
+  by default it will read 10 lines
+
+  > head -2 file.txt
+  read 2 lines from top
+
+  > head -20 file.txt
+  read top 20 lines
+
+  3# tail command #
+  > tail file.txt
+  last 10 lines from file
+
+  > tail -3 file.txt
+  last 3 lines
+  
+  ## Read Range of lines ##
+
+  4# awk command #
+  > awk 'NR>=6 && NR<=12 {print}'  line.txt
+  this prints line.txt line no 6 to 12
+
+  5# sed command #
+  > sed -n'6,12p' line.txt
+  this prints line.txt line no 6 to 12
+
+  6# head and tail combined command #
+  >head -12 line.txt | tail -7 line.txt
+

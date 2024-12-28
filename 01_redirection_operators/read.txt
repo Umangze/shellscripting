@@ -1,0 +1,108 @@
+Types of Redirection Operators:
+
+1)Output Redirection
+2)Input Redirection
+3)Combining Redirection
+
+###Output redirection operator###
+
+a) ">" To create a new file or copy to the existing file
+
+ $ ls -ltr > demo.txt
+
+ In the above example if demo.txt exists then it will store the output of the command in demo.txt,
+ if the file is not there then it will create the file first and then push the output of the command
+ to the file
+
+b) ">>" to append to the existing file
+
+ $ pwd > demo.txt
+
+ The above command appends output of the 'pwd' command to the end of the demo.txt file
+
+###Input redirection operator###
+
+a) "<" Input to some command
+
+ $ cat < demo.txt
+
+ The above command reads the file as input to the 'cat' command
+
+###Combined redirection operator###
+
+a) "|" to send the standard output of one command as standard input of another command
+
+ $ ls -ltra | awk '{ print $1}'
+
+ The above command prints the 1st field from the output of 'ls -ltra' command, you can add as many combined operator
+
+
+### STDIN, STDOUT AND STDERR (Standard Input, Standard Output and Standard Error) ###
+
+Q) How to separate standard out and standard Error
+
+Ans) Use file descriptor
+
+##File Descriptors##
+
+A file descriptor is simply an integer number to denote STDIN, STDOUT AND STDERR
+
+0 - STDIN
+1 - STDOUT
+2 - STDERR
+
+a) STDIN
+
+Generally standard input, referred to as "stdin", comes from the keyboard.
+
+When you type stuff, you're typing it on stdin (a standard input terminal). A standard input device, which is usually the keyboard, but Linux also allows you take standard input from a file.
+
+For example:
+
+ $ cat < myfirstscript 
+                
+This would tell cat to take input from the file myfirstscript instead of from the keyboard (This is of course the same as: cat myfirstscript).
+
+Essentially what this boils down to is that the input for this command (cat) is no longer coming from where it was expecting to come from (the keyboard), but is now coming from a file.
+
+Linux associates the file descriptor 0 with standard input. So, we could have said:
+
+ $ cat 0< myfirstscript
+                
+which would have produced the same as the previous command.
+
+b) STDOUT
+
+ $ ls -ltra > success.txt 
+
+ The above command can be written as below:
+
+ $ ls -ltra 1>success.txt
+
+ The above command means sends success output of the command to the file
+
+
+c) STDERR
+
+ $ ddndn 2>error.txt
+
+ The above command is used to put the error of the command to the file where "ddndn" is invalid command
+   
+
+Example of usage of STDIN and STDERR as combined
+
+ $ ls -ltra 1>success.txt 2>error.txt
+
+ The above command stores the success output to the success.txt file and error output to the error.txt file
+
+ $ ls -ltra 1>success.txt 2>&1
+
+ The above command stores success and error output to the success.txt file. 
+
+ This command can also be written as below
+
+ $ ls -ltra &> success.txt
+
+
+
+
